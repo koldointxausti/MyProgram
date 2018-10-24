@@ -23,7 +23,9 @@ public class MyProgram {
 						if (possibleLetter.charAt(0)==randomSurname.charAt(index)) {
 							lettersquantity++;
 							char[] guessedLetters=new char[lettersquantity];
-							
+							for (int i=0;i<=guessedLetters.length;i++) {
+								
+							}
 						}
 					}
 				}
