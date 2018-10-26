@@ -9,8 +9,10 @@ public class MyProgram2 {
 		System.out.println("Then, the player will have to guess which word is hidden between the voids.");
 		System.out.println("For this, you will be able to enter 3 letters that may appear in the word, or not. After this, you will only have a chance to guess the word hidden and win the game.");
 		System.out.println("Good luck, start with the first letter.");
+		// Open a loop that will go asking for a word to someone who is not playing
 		boolean wordFound=false;
 		while (wordFound==false) {
+			// Check that we don't enter a number
 			if (!sc.hasNextInt()) {
 				wordFound=true;
 				String word = sc.next();
