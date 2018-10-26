@@ -4,19 +4,20 @@ public class MyProgram {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
+		// Print the games' description
+		System.out.println("Welcome to the famous HANGMAN game.");
+		System.out.println("You will have to guess which surname of the people in class is hidden between the voids.");
+		System.out.println("For this, you will be able to enter 3 letters that may appear in the surname, or not. After this, you will only have a chance to guess the surname and win the game.");
 		boolean playAgain=true;
 		while (playAgain == true) {
 			// Save into an array all the surnames of the people in class
 			String[] surnames = {"lazkano","intxausti","artola","alberdi","lekubide","ortiz","gonzalez"};
 			// Take randomly a surname between them
 			String randomSurname = surnames[new Random().nextInt(surnames.length)];
-			// Print the games' description
-			System.out.println("Welcome to the famous HANGMAN game.");
-			System.out.println("You will have to guess which surname of the people in class is hidden between the voids.");
-			System.out.println("For this, you will be able to enter 3 letters that may appear in the surname, or not. After this, you will only have a chance to guess the surname and win the game.");
+			// Ask the first letter to the player
 			System.out.println("Good luck, start with the first letter.");
-			// Create a char array with the length of the surname taken
-			char guessed[]=new char[randomSurname.length()];
+			// Create a char array with the length of the maximum quantity of letters the player can guess
+			char guessed[]=new char[3];
 			// Declare a variable that will hold the number of letter that the player guesses
 			int guessedCounter=0;
 			// Print the word with voids
@@ -39,8 +40,8 @@ public class MyProgram {
 								boolean found = false;
 								int index2=0;
 								while (index2<guessed.length && guessed[index2]!=possibleLetter.charAt(0) && !found ){
-									if (guessed[index2]==guessed[3]) {
-										// If he/she had not done so and the letter is in the word, save the letter in the array 'guessed'
+									if (!Character.isLetter(guessed[index2])) {
+										// If he/she had not done so, save the letter in the array 'guessed'
 										guessed[guessedCounter] = randomSurname.charAt(index);
 										// Increment once the variable 'guessedCounter' for a future possible letter
 										guessedCounter++;

@@ -3,13 +3,13 @@ public class MyProgram2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
+		// Print the games' description
+		System.out.println("Welcome to the famous HANGMAN game V2.");
+		System.out.println("First of all, someone who is not playing has to enter a word.");
+		System.out.println("Then, the player will have to guess which word is hidden between the voids.");
+		System.out.println("For this, you will be able to enter 3 letters that may appear in the word, or not. After this, you will only have a chance to guess the word hidden and win the game.");
 		boolean playAgain=true;
 		while (playAgain == true) {
-			// Print the games' description
-			System.out.println("Welcome to the famous HANGMAN game V2.");
-			System.out.println("First of all, someone who is not playing has to enter a word.");
-			System.out.println("Then, the player will have to guess which word is hidden between the voids.");
-			System.out.println("For this, you will be able to enter 3 letters that may appear in the word, or not. After this, you will only have a chance to guess the word hidden and win the game.");
 			// Open a loop that will go asking for a word to someone who is not playing
 			boolean wordEntered=false;
 			while (wordEntered==false) {
@@ -22,8 +22,8 @@ public class MyProgram2 {
 					for (int spaceCounter=0;spaceCounter<20;spaceCounter++) {
 						System.out.println("");
 					}
-					// Create a char array with the length of the word
-					char guessed[]=new char[word.length()];
+					// Create a char array with the length of the maximum quantity of letters the player can guess
+					char guessed[]=new char[3];
 					// Declare a variable that will hold the number of letters that the player guesses
 					int guessedCounter=0;
 					// Print the word with voids
@@ -47,8 +47,8 @@ public class MyProgram2 {
 										boolean found = false;
 										int index2=0;
 										while (index2<guessed.length && guessed[index2]!=possibleLetter.charAt(0) && !found ){
-											if (guessed[index2]==guessed[3]) {
-												// If he/she had not done so and the letter is in the word, save the letter in the array 'guessed'
+											if (!Character.isLetter(guessed[index2])) {
+												// If he/she had not done so, save the letter in the array 'guessed'
 												guessed[guessedCounter] = word.charAt(index);
 												// Increment once the variable 'guessedCounter' for a future possible letter
 												guessedCounter++;
@@ -96,7 +96,7 @@ public class MyProgram2 {
 						}
 					}
 					// Ask to the player a possible word
-					System.out.println("It's the time, you have to guess the surname.");
+					System.out.println("It's the time, you have to guess the word.");
 					String userRandom = sc.next();
 					if (userRandom.equals(word)) {
 						System.out.println("Congrats, you won the game.");
