@@ -19,7 +19,7 @@ public class MyProgram2 {
 					wordEntered=true;
 					String word = sc.next();
 					// Hide the word to the player
-					for (int spaceCounter=0;spaceCounter<20;spaceCounter++) {
+					for (int spaceCounter=0;spaceCounter<100;spaceCounter++) {
 						System.out.println("");
 					}
 					// Create a char array with the length of the maximum quantity of letters the player can guess
