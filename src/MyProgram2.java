@@ -19,10 +19,9 @@ public class MyProgram2 {
 					String word = sc.nextLine().toLowerCase();
 					String[] wordArray = word.split(" ");
 					if (wordArray.length==1) {
-						char[] wordLetterArray = wordArray[0].toCharArray();
 						boolean numberFound=false;
-						for (int i=0;i<wordLetterArray.length;i++) {
-							if (wordLetterArray[i]==0||wordLetterArray[i]==1||wordLetterArray[i]==2||wordLetterArray[i]==3||wordLetterArray[i]==4||wordLetterArray[i]==5||wordLetterArray[i]==6||wordLetterArray[i]==7||wordLetterArray[i]==8||wordLetterArray[i]==9) {
+						for (int i=0;i<wordArray[0].length();i++) {
+							if (wordArray[0].charAt(i)=='0'||wordArray[0].charAt(i)=='1'||wordArray[0].charAt(i)=='2'||wordArray[0].charAt(i)=='3'||wordArray[0].charAt(i)=='4'||wordArray[0].charAt(i)=='5'||wordArray[0].charAt(i)=='6'||wordArray[0].charAt(i)=='7'||wordArray[0].charAt(i)=='8'||wordArray[0].charAt(i)=='9') {
 								numberFound=true;
 							}
 						}
