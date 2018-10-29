@@ -30,33 +30,39 @@ public class MyProgram {
 				// Check that the player doesn't enter a number
 				if (!sc.hasNextInt()) {
 					// Create a string object with the letter's value
-					String possibleLetter=sc.next();
-					// Check that the player has entered just a character
-					if (possibleLetter.length()==1) {
-						// Open a loop that will go checking if the letter the player entered is in the surname
-						for (int index=0;index<randomSurname.length();index++) {
-							if (randomSurname.charAt(index)==possibleLetter.charAt(0)) {
-								// If it is, open another loop which will go checking if the player had already guessed that letter
-								boolean found = false;
-								int index2=0;
-								while (index2<guessed.length && guessed[index2]!=possibleLetter.charAt(0) && !found ){
-									if (!Character.isLetter(guessed[index2])) {
-										// If he/she had not done so, save the letter in the array 'guessed'
-										guessed[guessedCounter] = randomSurname.charAt(index);
-										// Increment once the variable 'guessedCounter' for a future possible letter
-										guessedCounter++;
-										// Define the variable 'found' as true so as to get out of the loop
-										found = true;
+					String possibleLetter=sc.nextLine().toLowerCase();
+					String[] letterArray = possibleLetter.split(" ");
+					if(letterArray.length==1) {
+						// Check that the player has entered just a character
+						if (letterArray[0].length()==1) {
+							// Open a loop that will go checking if the letter the player entered is in the surname
+							for (int index=0;index<randomSurname.length();index++) {
+								if (randomSurname.charAt(index)==letterArray[0].charAt(0)) {
+									// If it is, open another loop which will go checking if the player had already guessed that letter
+									boolean found = false;
+									int index2=0;
+									while (index2<guessed.length && guessed[index2]!=letterArray[0].charAt(0) && !found ){
+										if (!Character.isLetter(guessed[index2])) {
+											// If he/she had not done so, save the letter in the array 'guessed'
+											guessed[guessedCounter] = randomSurname.charAt(index);
+											// Increment once the variable 'guessedCounter' for a future possible letter
+											guessedCounter++;
+											// Define the variable 'found' as true so as to get out of the loop
+											found = true;
+										}
+										// Increment the variable 'index2' so as to check the next letter of the array 'guessed'
+										index2++;
 									}
-									// Increment the variable 'index2' so as to check the next letter of the array 'guessed'
-									index2++;
 								}
 							}
+							// Increment 'flag' so as to ask for another letter
+							flag++;
 						}
-						// Increment 'flag' so as to ask for another letter
-						flag++;
+						// If the player entered more than one characters, ask him/her to enter just one
+						else {
+							System.out.println("Don't cheat, please enter just a letter.");
+						}
 					}
-					// If the player entered more than one characters, ask him/her to enter just one
 					else {
 						System.out.println("Don't cheat, please enter just a letter.");
 					}
@@ -64,8 +70,7 @@ public class MyProgram {
 				// If the player entered a number, ask him to enter a letter
 				else {
 					System.out.println("That is not a letter, try it again.");
-					// Jump the token '/n'
-					sc.next();
+					sc.nextLine();
 				}
 				// Print the surname with only the letters that the player guessed
 				for (int index4=0;index4<randomSurname.length();index4++) {
@@ -90,7 +95,7 @@ public class MyProgram {
 			}
 			// Ask to the player a possible surname
 			System.out.println("It's the time, you have to guess the surname.");
-			String userRandom = sc.next();
+			String userRandom = sc.next().toLowerCase();
 			if (userRandom.equals(randomSurname)) {
 				System.out.println("Congrats, you won the game.");
 			}
@@ -101,7 +106,8 @@ public class MyProgram {
 			System.out.println("Would you like to play again?(y/n)");
 			boolean askAgain = true;
 			while (askAgain==true) {
-				String back = sc.next();
+				String back = sc.next().toLowerCase();
+				sc.nextLine();
 				switch ( back ) {
 				   	case "y":
 				   		// Get out of the loop and play again
