@@ -93,14 +93,35 @@ public class MyProgram {
 					System.out.println("You have just a letter left.");
 				}
 			}
-			// Ask to the player a possible surname
-			System.out.println("It's the time, you have to guess the surname.");
-			String userRandom = sc.next().toLowerCase();
-			if (userRandom.equals(randomSurname)) {
-				System.out.println("Congrats, you won the game.");
-			}
-			else {
-				System.out.println("I'm sorry, you lost the game. The surname was " + randomSurname);
+			// Ask to the player a possible word
+			System.out.println("It's the time, you have to guess the word.");
+			boolean wordEntered2=false;
+			while (wordEntered2==false) {
+				String playerWord = sc.nextLine().toLowerCase();
+				String[] playerWordArray=playerWord.split(" ");
+				if (playerWordArray.length==1) {
+					boolean numberFound2=false;
+					for (int i=0;i<playerWordArray[0].length();i++) {
+						if (playerWordArray[0].charAt(i)=='0'||playerWordArray[0].charAt(i)=='1'||playerWordArray[0].charAt(i)=='2'||playerWordArray[0].charAt(i)=='3'||playerWordArray[0].charAt(i)=='4'||playerWordArray[0].charAt(i)=='5'||playerWordArray[0].charAt(i)=='6'||playerWordArray[0].charAt(i)=='7'||playerWordArray[0].charAt(i)=='8'||playerWordArray[0].charAt(i)=='9') {
+							numberFound2=true;
+						}
+					}
+					if (numberFound2==false) {
+						wordEntered2=true;
+						if (playerWordArray[0].equals(randomSurname)) {
+							System.out.println("Congrats, you won the game.");
+						}
+						else {
+							System.out.println("I'm sorry, you lost the game. The surname was " + randomSurname);
+						}
+					}
+					else {
+						System.out.println("Please, enter a real surname.");
+					}
+				}
+				else {
+					System.out.println("Please, enter just a surname.");
+				}
 			}
 			// Ask if the player wants to play again
 			System.out.println("Would you like to play again?(y/n)");
